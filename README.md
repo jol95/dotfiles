@@ -37,3 +37,31 @@ If a real file or directory already exists at the target, it is renamed to
 `<name>.bak` first. Safe to re-run.
 
 ## Layout
+
+dotfiles/
+├── bootstrap.sh
+├── install.sh
+└── nvim/
+├── init.lua # entry point
+├── nvim-pack-lock.json # pinned plugin versions (commit this)
+└── lua/jenso/
+├── core/ # options, keymaps
+├── pack/ # plugins: init.lua lists them, one file each
+└── lsp/ # language servers (planned)
+
+Plugins are managed with Neovim's built-in `vim.pack` (requires Neovim 0.12+).
+To add a plugin: add its URL in `pack/init.lua`, create `pack/<name>.lua` with
+its setup, and `require` it at the bottom of `pack/init.lua`.
+
+## Manual steps (not automated)
+
+- **Git identity**: `git config --global user.name "…"` and `user.email "…"`
+- **Nerd Font** (WSL): install one on Windows and select it in
+  Windows Terminal -> profile -> Appearance. Needed for icons.
+- **SSH agent**: shared-agent snippet in `~/.bashrc` and `AddKeysToAgent yes`
+  in `~/.ssh/config` (not yet tracked in this repo).
+
+## Updating
+
+- Neovim plugins: `:lua vim.pack.update()`
+- Neovim itself: delete `/opt/nvim` and re-run `./bootstrap.sh`
