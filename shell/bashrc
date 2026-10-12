@@ -1,0 +1,8 @@
+# Sourced from ~/.bashrc by install.sh.
+# One shared ssh-agent for all terminal tabs (fixed socket path).
+export SSH_AUTH_SOCK="$HOME/.ssh/agent.sock"
+ssh-add -l >/dev/null 2>&1
+if [ $? -eq 2 ]; then   # exit code 2 = no agent reachable
+  rm -f "$SSH_AUTH_SOCK"
+  ssh-agent -a "$SSH_AUTH_SOCK" >/dev/null
+fi

@@ -25,6 +25,11 @@ if [ ! -x /usr/local/go/bin/go ]; then
   sudo tar -C /usr/local -xzf /tmp/go.tar.gz
 fi
 
+echo "== Claude Code =="
+if [ ! -x "$HOME/.local/bin/claude" ]; then
+  curl -fsSL https://claude.ai/install.sh | bash
+fi
+
 echo "== tree-sitter CLI =="
 if ! command -v tree-sitter >/dev/null; then
   curl -fL -o /tmp/ts.gz \

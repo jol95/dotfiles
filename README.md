@@ -57,6 +57,7 @@ already done.
 - `fd` symlink in `~/.local/bin` (Ubuntu ships the binary as `fdfind`)
 - Neovim (latest release tarball) in `/opt/nvim`. Needs 0.12+ for `vim.pack`
 - Go (latest release) in `/usr/local/go`
+- Claude Code (native installer, `~/.local/bin/claude`, auto-updates)
 - `tree-sitter` CLI (release binary) in `~/.local/bin`. Needs 0.26.1+ for nvim-treesitter
 - catppuccin theme for tmux, cloned into `tmux/plugins/` (gitignored). It is cloned
   into the repo folder, not `~/.config/tmux`, because `bootstrap.sh` runs before
@@ -116,11 +117,17 @@ Prefix is `Ctrl-Space`.
 | prefix `r` | reload config |
 | prefix `Ctrl-l` | clear screen (plain `Ctrl-l` is used for navigation) |
 
+## Shell and SSH
+
+`install.sh` does not symlink `~/.bashrc` or `~/.ssh`. Instead:
+
+- It adds one line to `~/.bashrc` that sources `shell/bashrc` (shared ssh-agent,
+  so you type the key passphrase once, not in every tab).
+- It adds `Include <repo>/ssh/config` as the first line of `~/.ssh/config`
+  (`AddKeysToAgent yes`). Keys are never stored in this repo.
+
 ## Known gaps (not automated yet)
 
-- **SSH agent**: without a shared agent, you are asked for the key passphrase in
-  every new terminal tab. The fix lives in `~/.bashrc` and `~/.ssh/config`, not
-  in this repo.
 - **Windows side**: Nerd Font and Windows Terminal settings are manual.
 
 ## Updating
