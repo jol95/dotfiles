@@ -1,0 +1,3 @@
+-- vim-tmux-navigator is plain Vimscript: no setup() call needed.
+-- It maps <C-h/j/k/l> to move between Neovim splits and, at the edge,
+-- hands over to tmux. The matching tmux side lives in tmux/tmux.conf.

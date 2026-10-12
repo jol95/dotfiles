@@ -25,6 +25,14 @@ if [ ! -x /usr/local/go/bin/go ]; then
   sudo tar -C /usr/local -xzf /tmp/go.tar.gz
 fi
 
+echo "== tree-sitter CLI =="
+if ! command -v tree-sitter >/dev/null; then
+  curl -fL -o /tmp/ts.gz \
+    https://github.com/tree-sitter/tree-sitter/releases/latest/download/tree-sitter-linux-x64.gz
+  gunzip -f /tmp/ts.gz
+  install -m 755 /tmp/ts "$HOME/.local/bin/tree-sitter"
+fi
+
 echo "== tmux theme =="
 DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 CAT="$DOTFILES/tmux/plugins/catppuccin/tmux"
