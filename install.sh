@@ -15,3 +15,5 @@ link() {
 }
 
 link "$DOTFILES/nvim" "$HOME/.config/nvim"
+link "$DOTFILES/tmux" "$HOME/.config/tmux"
+link "$DOTFILES/tmux" "$HOME/.config/tmux"

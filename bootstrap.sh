@@ -4,7 +4,7 @@ set -euo pipefail
 echo "== apt packages =="
 sudo apt update
 sudo apt install -y git curl unzip build-essential ripgrep fd-find \
-  python3-venv python3-pip nodejs npm
+  python3-venv python3-pip nodejs npm tmux tmux
 
 mkdir -p "$HOME/.local/bin"
 command -v fd >/dev/null || ln -s "$(command -v fdfind)" "$HOME/.local/bin/fd"
@@ -24,6 +24,11 @@ if [ ! -x /usr/local/go/bin/go ]; then
   sudo rm -rf /usr/local/go
   sudo tar -C /usr/local -xzf /tmp/go.tar.gz
 fi
+
+echo "== tmux theme =="
+DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+CAT="$DOTFILES/tmux/plugins/catppuccin/tmux"
+[ -d "$CAT" ] || git clone --depth 1 https://github.com/catppuccin/tmux "$CAT"
 
 echo "== PATH entries in ~/.bashrc =="
 add_path() {
