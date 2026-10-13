@@ -31,6 +31,11 @@ vim.pack.add({
 	-- Syntax
 	"https://github.com/nvim-treesitter/nvim-treesitter",
 
+	-- LSP
+	"https://github.com/neovim/nvim-lspconfig",
+	"https://github.com/mason-org/mason.nvim",
+	"https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim",
+
 	-- Navigation
 	"https://github.com/christoomey/vim-tmux-navigator",
 
@@ -43,5 +48,6 @@ require("jenso.pack.lualine")
 require("jenso.pack.which-key")
 require("jenso.pack.telescope")
 require("jenso.pack.treesitter")
+require("jenso.pack.lsp")
 require("jenso.pack.tmux-navigator")
 require("jenso.pack.gitsigns")
